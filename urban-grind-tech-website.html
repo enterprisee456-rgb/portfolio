@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Urban Grind Tech builds secure websites, software, business automations and integrations. Explore Urban Grind Security and our digital services in Kenya.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Urban Grind Tech — Secure Digital Systems">
+  <meta property="og:description" content="Technology, security and automation for businesses ready to move forward.">
+  <title>Urban Grind Tech — Secure Digital Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b12;
+      --surface: #0e1420;
+      --surface-2: #121b2a;
+      --line: rgba(183, 205, 226, .13);
+      --text: #f3f7fa;
+      --muted: #a0adbb;
+      --green: #00ff88;
+      --green-ink: #04130c;
+      --blue: #72a9ff;
+      --max: 1160px;
+      --display: "Manrope", system-ui, sans-serif;
+      --mono: "DM Mono", ui-monospace, monospace;
+      font-family: var(--display);
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    body::selection { background: var(--green); color: var(--green-ink); }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--green); font: 500 .76rem/1.4 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+    .section { padding: 108px 0; }
+    .section-head { max-width: 690px; margin-bottom: 42px; }
+    .section-head h2 { margin: 15px 0 14px; font-size: clamp(2rem, 4.5vw, 3.35rem); line-height: 1.08; letter-spacing: -.055em; }
+    .section-head p { margin: 0; max-width: 58ch; color: var(--muted); font-size: 1.04rem; }
+    .accent { color: var(--green); }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 19px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--text); text-decoration: none; font-size: .92rem; font-weight: 800; transition: transform .2s ease, border-color .2s ease, background .2s ease; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); border-color: rgba(0,255,136,.55); }
+    .button.primary { background: var(--green); border-color: var(--green); color: var(--green-ink); }
+    .button.primary:hover { background: #43ffab; }
+    .button svg { width: 17px; height: 17px; }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 50; background: rgba(8,11,18,.86); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
+    .nav-wrap { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; min-width: max-content; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid rgba(0,255,136,.55); border-radius: 10px; color: var(--green); font: 500 .85rem var(--mono); box-shadow: inset 0 0 20px rgba(0,255,136,.07); }
+    .brand-name { display: grid; line-height: 1.1; }
+    .brand-name strong { font-size: .94rem; letter-spacing: .08em; }
+    .brand-name small { margin-top: 5px; color: var(--muted); font: .62rem var(--mono); letter-spacing: .17em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .86rem; font-weight: 700; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links .nav-cta { color: var(--green); }
+    .menu-toggle { display: none; width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: var(--text); cursor: pointer; }
+    .menu-toggle svg { width: 20px; height: 20px; }
+
+    /* Hero */
+    .hero { position: relative; overflow: hidden; padding: 104px 0 92px; }
+    .hero::before { content: ""; position: absolute; width: 660px; height: 660px; right: -240px; top: -340px; border-radius: 50%; background: rgba(0,255,136,.08); filter: blur(90px); pointer-events: none; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: 68px; align-items: center; }
+    .hero h1 { max-width: 780px; margin: 22px 0 22px; font-size: clamp(2.9rem, 6.2vw, 5.35rem); font-weight: 800; line-height: .99; letter-spacing: -.075em; }
+    .hero-copy > p { max-width: 57ch; margin: 0 0 30px; color: var(--muted); font-size: clamp(1.02rem, 1.8vw, 1.18rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 32px; color: var(--muted); font: .73rem var(--mono); }
+    .hero-note span { display: inline-flex; align-items: center; gap: 8px; }
+    .dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: var(--green); box-shadow: 0 0 12px rgba(0,255,136,.8); }
+    .visual { position: relative; min-height: 450px; display: grid; place-items: center; }
+    .visual-grid { position: absolute; inset: 9% 0; opacity: .55; background-image: linear-gradient(rgba(130,163,190,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(130,163,190,.12) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(ellipse at center, #000 25%, transparent 76%); }
+    .orbit { position: absolute; width: min(90%, 390px); aspect-ratio: 1; border: 1px solid rgba(0,255,136,.22); border-radius: 50%; transform: rotate(-22deg) scaleY(.72); }
+    .orbit::before, .orbit::after { content: ""; position: absolute; inset: 13%; border: 1px solid rgba(114,169,255,.21); border-radius: 50%; }
+    .orbit::after { inset: 27%; border-color: rgba(0,255,136,.3); }
+    .core-card { position: relative; width: min(78%, 340px); padding: 26px; border: 1px solid rgba(0,255,136,.35); border-radius: 18px; background: linear-gradient(145deg, rgba(21,35,48,.97), rgba(10,16,26,.97)); box-shadow: 0 24px 90px rgba(0,0,0,.4), 0 0 70px rgba(0,255,136,.08); }
+    .core-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 18px; border-bottom: 1px solid var(--line); color: var(--muted); font: .68rem var(--mono); letter-spacing: .1em; }
+    .core-icon { display: grid; place-items: center; width: 92px; height: 92px; margin: 28px auto 22px; border: 1px solid rgba(0,255,136,.45); border-radius: 27px; background: rgba(0,255,136,.07); color: var(--green); box-shadow: 0 0 42px rgba(0,255,136,.13); }
+    .core-icon svg { width: 50px; height: 50px; }
+    .core-card h2 { margin: 0; text-align: center; font-size: 1.55rem; letter-spacing: -.04em; }
+    .core-card p { margin: 7px 0 20px; color: var(--muted); text-align: center; font-size: .83rem; }
+    .core-status { display: flex; align-items: center; justify-content: center; gap: 9px; padding: 10px; border: 1px solid var(--line); border-radius: 7px; color: #cbd8d1; font: .68rem var(--mono); }
+    .float-chip { position: absolute; padding: 10px 13px; border: 1px solid var(--line); border-radius: 8px; background: #111a27; color: #d9e4ec; box-shadow: 0 12px 35px rgba(0,0,0,.28); font: .68rem var(--mono); }
+    .float-chip.one { top: 12%; left: 1%; }
+    .float-chip.two { right: -1%; bottom: 16%; }
+    .float-chip b { color: var(--green); font-weight: 500; }
+
+    /* Trust strip */
+    .signal-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.015); }
+    .signal-inner { display: grid; grid-template-columns: repeat(4,1fr); }
+    .signal { min-height: 90px; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 18px; border-right: 1px solid var(--line); color: var(--muted); font-size: .82rem; font-weight: 700; }
+    .signal:first-child { border-left: 1px solid var(--line); }
+    .signal svg { width: 19px; height: 19px; flex: 0 0 auto; color: var(--green); }
+
+    /* Service cards */
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .service-card { position: relative; min-height: 246px; padding: 28px; border: 1px solid var(--line); border-radius: 13px; background: linear-gradient(145deg, rgba(17,27,42,.86), rgba(11,16,26,.86)); transition: transform .22s ease, border-color .22s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: rgba(0,255,136,.42); }
+    .service-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 25px; border: 1px solid rgba(0,255,136,.23); border-radius: 10px; background: rgba(0,255,136,.06); color: var(--green); }
+    .service-icon svg { width: 21px; height: 21px; }
+    .service-card h3 { margin: 0 0 9px; font-size: 1.2rem; letter-spacing: -.035em; }
+    .service-card p { margin: 0; max-width: 55ch; color: var(--muted); font-size: .92rem; }
+    .service-label { display: inline-block; margin-top: 20px; color: var(--green); font: .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+    /* Divisions */
+    .division-section { padding-top: 26px; }
+    .division-panel { display: grid; grid-template-columns: .8fr 1.2fr; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); }
+    .division-intro { padding: 38px; background: linear-gradient(145deg, rgba(0,255,136,.09), transparent 72%); }
+    .division-intro h3 { margin: 15px 0 12px; font-size: 2rem; line-height: 1.08; letter-spacing: -.06em; }
+    .division-intro p { margin: 0 0 22px; color: var(--muted); font-size: .93rem; }
+    .division-list { display: grid; grid-template-columns: 1fr 1fr; }
+    .division-item { padding: 30px; border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .division-item:nth-child(3), .division-item:nth-child(4) { border-bottom: 0; }
+    .division-item .num { color: var(--green); font: .72rem var(--mono); }
+    .division-item h4 { margin: 13px 0 7px; font-size: 1rem; }
+    .division-item p { margin: 0; color: var(--muted); font-size: .83rem; }
+
+    /* Work */
+    .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .work-card { display: flex; flex-direction: column; min-height: 315px; overflow: hidden; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); text-decoration: none; transition: transform .22s ease, border-color .22s ease; }
+    .work-card:hover { transform: translateY(-4px); border-color: rgba(0,255,136,.4); }
+    .work-art { position: relative; display: grid; place-items: center; height: 145px; overflow: hidden; background: radial-gradient(circle at 50% 40%, rgba(0,255,136,.15), transparent 54%), #101a27; border-bottom: 1px solid var(--line); }
+    .work-art::before { content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(0,255,136,.22); border-radius: 50%; }
+    .work-art::after { content: ""; position: absolute; width: 125px; height: 125px; border: 1px dashed rgba(114,169,255,.35); border-radius: 50%; }
+    .work-art svg { position: relative; z-index: 1; width: 45px; height: 45px; color: var(--green); }
+    .work-content { display: flex; flex: 1; flex-direction: column; padding: 22px; }
+    .work-type { color: var(--green); font: .66rem var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .work-content h3 { margin: 9px 0 8px; font-size: 1.16rem; }
+    .work-content p { margin: 0 0 20px; color: var(--muted); font-size: .86rem; }
+    .work-link { display: inline-flex; align-items: center; gap: 7px; margin-top: auto; color: var(--text); font-size: .8rem; font-weight: 800; }
+    .work-link svg { width: 15px; height: 15px; color: var(--green); }
+
+    /* Process */
+    .process-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; counter-reset: step; }
+    .process-card { counter-increment: step; padding: 28px; border-top: 1px solid var(--green); background: linear-gradient(180deg, rgba(0,255,136,.055), transparent 80%); }
+    .process-card::before { content: "0" counter(step); color: var(--green); font: .8rem var(--mono); }
+    .process-card h3 { margin: 20px 0 8px; font-size: 1.18rem; }
+    .process-card p { margin: 0; color: var(--muted); font-size: .89rem; }
+
+    /* Pricing */
+    .pricing-note { margin: -22px 0 28px; color: var(--muted); font-size: .83rem; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; padding: 27px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+    .price-card.featured { border-color: rgba(0,255,136,.55); background: linear-gradient(155deg, rgba(0,255,136,.08), var(--surface) 55%); }
+    .price-tag { align-self: flex-start; margin-bottom: 14px; padding: 5px 9px; border: 1px solid rgba(0,255,136,.25); border-radius: 5px; color: var(--green); font: .65rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .price-card h3 { margin: 0; font-size: 1.22rem; }
+    .price { margin: 14px 0 2px; font-size: 2rem; font-weight: 800; letter-spacing: -.06em; }
+    .price small { color: var(--muted); font-size: .78rem; font-weight: 600; letter-spacing: 0; }
+    .price-desc { min-height: 48px; margin: 0 0 17px; color: var(--muted); font-size: .82rem; }
+    .price-card ul { flex: 1; margin: 0 0 24px; padding: 0; list-style: none; }
+    .price-card li { position: relative; padding: 10px 0 10px 22px; border-top: 1px solid var(--line); color: #d4dee5; font-size: .84rem; }
+    .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--green); }
+    .price-card .button { width: 100%; }
+    .pricing-foot { margin-top: 18px; color: var(--muted); font-size: .78rem; }
+
+    /* About + contact */
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-stamp { position: sticky; top: 110px; padding: 28px; border: 1px solid var(--line); border-radius: 13px; background: radial-gradient(circle at 0% 0%, rgba(0,255,136,.1), transparent 55%), var(--surface); }
+    .about-stamp .big { display: block; color: var(--green); font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -.09em; }
+    .about-stamp p { margin: 12px 0 0; color: var(--muted); font: .73rem var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+    .about-copy h2 { margin: 12px 0 20px; font-size: clamp(2rem,4vw,3rem); line-height: 1.08; letter-spacing: -.06em; }
+    .about-copy > p { color: var(--muted); }
+    .values { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 30px; }
+    .value { padding: 17px; border: 1px solid var(--line); border-radius: 9px; }
+    .value strong { display: block; margin-bottom: 4px; font-size: .9rem; }
+    .value span { color: var(--muted); font-size: .78rem; }
+    .contact-section { padding-top: 20px; }
+    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr .8fr; gap: 50px; padding: 55px; border: 1px solid rgba(0,255,136,.27); border-radius: 16px; background: radial-gradient(circle at 100% 0%, rgba(0,255,136,.11), transparent 43%), var(--surface); }
+    .contact-panel h2 { max-width: 580px; margin: 13px 0; font-size: clamp(2rem,4.7vw,3.7rem); line-height: 1.03; letter-spacing: -.065em; }
+    .contact-panel p { max-width: 52ch; margin: 0; color: var(--muted); }
+    .contact-details { display: flex; flex-direction: column; justify-content: center; gap: 13px; }
+    .contact-link { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 9px; text-decoration: none; transition: border-color .2s ease; }
+    .contact-link:hover { border-color: rgba(0,255,136,.5); }
+    .contact-link svg { width: 19px; height: 19px; color: var(--green); flex: 0 0 auto; }
+    .contact-link span { display: grid; color: var(--muted); font-size: .72rem; }
+    .contact-link strong { color: var(--text); font-size: .87rem; overflow-wrap: anywhere; }
+    .contact-small { margin-top: 16px !important; font: .7rem var(--mono); }
+
+    /* Footer */
+    footer { padding: 28px 0 34px; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-copy { font-size: .77rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: .77rem; }
+    .footer-links a:hover { color: var(--green); }
+    .disclaimer { margin-top: 18px; color: #788697; font-size: .7rem; }
+    .back-top { position: fixed; right: 22px; bottom: 22px; z-index: 30; display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(0,255,136,.35); border-radius: 9px; background: #101a27; color: var(--green); text-decoration: none; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s ease; }
+    .back-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-top svg { width: 18px; height: 18px; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 17px; }
+      .hero-grid { gap: 25px; }
+      .visual { min-height: 390px; }
+      .division-panel { grid-template-columns: 1fr; }
+      .division-list { border-top: 1px solid var(--line); }
+      .division-item:first-child, .division-item:nth-child(3) { border-left: 0; }
+      .division-item:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .about-grid { gap: 35px; }
+      .contact-panel { padding: 38px; gap: 25px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(var(--max), calc(100% - 36px)); }
+      .nav-wrap { height: 68px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 68px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 9px 18px 18px; border-bottom: 1px solid var(--line); background: rgba(8,11,18,.98); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 13px 5px; border-bottom: 1px solid var(--line); }
+      .nav-links .nav-cta { margin-top: 9px; padding: 12px; border: 1px solid rgba(0,255,136,.35); border-radius: 7px; text-align: center; }
+      .hero { padding: 70px 0 62px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(2.75rem, 13vw, 4.6rem); }
+      .visual { min-height: 350px; margin-top: 4px; }
+      .core-card { width: min(75%, 320px); }
+      .float-chip.one { left: 0; }
+      .float-chip.two { right: 0; }
+      .signal-inner { grid-template-columns: 1fr 1fr; }
+      .signal { min-height: 75px; justify-content: flex-start; padding: 15px 12px; font-size: .73rem; }
+      .signal:nth-child(3) { border-left: 1px solid var(--line); }
+      .signal:nth-child(1), .signal:nth-child(2) { border-bottom: 1px solid var(--line); }
+      .section { padding: 76px 0; }
+      .section-head { margin-bottom: 30px; }
+      .services-grid, .work-grid, .pricing-grid, .process-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: auto; }
+      .division-intro { padding: 27px; }
+      .division-list { grid-template-columns: 1fr 1fr; }
+      .division-item { padding: 20px 16px; }
+      .work-card { min-height: 285px; }
+      .price-desc { min-height: 0; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stamp { position: static; }
+      .contact-panel { grid-template-columns: 1fr; padding: 28px 22px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .container { width: calc(100% - 28px); }
+      .brand-name strong { font-size: .84rem; }
+      .division-list, .values { grid-template-columns: 1fr; }
+      .division-item { border-left: 0; border-bottom: 1px solid var(--line) !important; }
+      .division-item:last-child { border-bottom: 0 !important; }
+      .hero-actions .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="#top" aria-label="Urban Grind Tech home">
+        <span class="brand-mark">UG</span>
+        <span class="brand-name"><strong>URBAN GRIND</strong><small>TECHNOLOGY / SECURITY</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav-links" id="main-nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#divisions">Our divisions</a>
+        <a href="#work">Our work</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Start a project ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Kenya-based technology company</span>
+          <h1>Build smarter.<br><span class="accent">Stay secure.</span><br>Move forward.</h1>
+          <p>Urban Grind Tech helps businesses build a stronger digital presence with websites, software, cybersecurity and practical automation — all shaped around the way they work.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">Talk about a project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a class="button" href="#services">Explore our services</a>
+          </div>
+          <div class="hero-note">
+            <span><i class="dot"></i> Based in Kenya</span>
+            <span>Working with clients remotely</span>
+          </div>
+        </div>
+        <div class="visual" aria-label="Urban Grind technology and security graphic">
+          <div class="visual-grid"></div>
+          <div class="orbit"></div>
+          <div class="float-chip one"><b>01</b> / BUILD</div>
+          <div class="float-chip two"><b>02</b> / PROTECT</div>
+          <div class="core-card">
+            <div class="core-top"><span>URBAN GRIND / CORE</span><span>UG—01</span></div>
+            <div class="core-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6 52 14v15c0 13-8.6 23.5-20 29C20.6 52.5 12 42 12 29V14L32 6Z"/><path d="m22 32 7 7 14-15"/><path d="M32 15v5" opacity=".55"/></svg>
+            </div>
+            <h2>Digital, by design.</h2>
+            <p>Technology with security built into the process.</p>
+            <div class="core-status"><i class="dot"></i> BUILDING WITH PURPOSE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="signal-strip" aria-label="Our focus areas">
+      <div class="container signal-inner">
+        <div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 9h10M7 12h6"/></svg>Digital products</div>
+        <div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.4 8-8 10-4.6-2-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>Security-first thinking</div>
+        <div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v4M12 17v4M4.2 6.2 7 9M17 15l2.8 2.8M3 12h4M17 12h4M4.2 17.8 7 15M17 9l2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg>Practical automation</div>
+        <div class="signal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4zM8 9h8M8 13h5M8 17h3"/><path d="m16 15 2 2 3-4"/></svg>Clear project handover</div>
+      </div>
+    </div>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we do</span>
+          <h2>Technology that works<br>for <span class="accent">your business.</span></h2>
+          <p>From your first website to the systems behind daily operations, we help turn ideas and business needs into useful digital solutions.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 6.5h.01M11 6.5h.01M7 13h4M7 16h7"/></svg></div>
+            <h3>Websites & digital products</h3>
+            <p>Business websites, landing pages, online stores, dashboards and custom web applications designed around your customers and workflows.</p>
+            <span class="service-label">Design / Development</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 20 6v6c0 5-3.4 8-8 10-4.6-2-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div>
+            <h3>Cybersecurity & hardening</h3>
+            <p>Authorized website and network assessments, configuration reviews, practical hardening guidance and security awareness support.</p>
+            <span class="service-label">Urban Grind Security</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3h6M10 3v5l-5.5 9.2A2.5 2.5 0 0 0 6.6 21h10.8a2.5 2.5 0 0 0 2.1-3.8L14 8V3"/><path d="M8 15h8M10 12h4"/></svg></div>
+            <h3>AI & workflow automation</h3>
+            <p>Chatbots, AI assistants and connected workflows that can help manage enquiries, organise information and reduce repetitive tasks.</p>
+            <span class="service-label">Automation / AI</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h3M15 15h2"/></svg></div>
+            <h3>Payments & system integrations</h3>
+            <p>M-Pesa Daraja integrations, API connections and links between the tools your business already uses.</p>
+            <span class="service-label">APIs / Business systems</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4zM8 9h8M8 13h5M8 17h3"/><path d="m16 15 2 2 3-4"/></svg></div>
+            <h3>Business technology support</h3>
+            <p>Practical help with setup, updates, backups, website maintenance and everyday digital challenges, with scope agreed in advance.</p>
+            <span class="service-label">Support / Maintenance</span>
+          </article>
+          <article class="service-card">
+            <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19 19 4M7 4h13v13"/><path d="M4 9v11h11"/></svg></div>
+            <h3>Branding & digital presence</h3>
+            <p>Logo design, brand foundations and a consistent digital presence that helps your business communicate clearly.</p>
+            <span class="service-label">Identity / Creative</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section division-section" id="divisions">
+      <div class="container">
+        <div class="division-panel">
+          <div class="division-intro">
+            <span class="eyebrow">How we're organised</span>
+            <h3>One brand.<br>Connected capabilities.</h3>
+            <p>Urban Grind Tech brings digital services together under one roof, with focused service areas for different business needs.</p>
+            <a class="button" href="#contact">Find the right service ↗</a>
+          </div>
+          <div class="division-list">
+            <div class="division-item"><span class="num">01 / SECURITY</span><h4>Urban Grind Security</h4><p>Authorized assessments, security reviews and hardening guidance.</p></div>
+            <div class="division-item"><span class="num">02 / DIGITAL</span><h4>Urban Grind Digital</h4><p>Websites, e-commerce experiences and custom software.</p></div>
+            <div class="division-item"><span class="num">03 / AUTOMATION</span><h4>Urban Grind Automation</h4><p>AI assistants, chatbots and connected business workflows.</p></div>
+            <div class="division-item"><span class="num">04 / INTEGRATIONS</span><h4>Urban Grind Integrations</h4><p>Payment connections, APIs and business-system integrations.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Selected work & experiments</span>
+          <h2>Ideas turned into<br><span class="accent">working builds.</span></h2>
+          <p>A selection of digital products and technical projects. Some are live builds; others are ongoing lab and prototype work.</p>
+        </div>
+        <div class="work-grid">
+          <a class="work-card" href="https://naihood.site" target="_blank" rel="noopener">
+            <div class="work-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m3 11 9-7 9 7v9H3z"/><path d="M9 20v-6h6v6M3 11h18"/></svg></div>
+            <div class="work-content"><span class="work-type">Web product / Live</span><h3>Naihood</h3><p>A housing discovery platform concept connecting people searching for homes with property listings and neighbourhood information.</p><span class="work-link">Visit naihood.site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></span></div>
+          </a>
+          <article class="work-card">
+            <div class="work-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 20 6v6c0 5-3.4 8-8 10-4.6-2-8-5-8-10V6l8-3Z"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <div class="work-content"><span class="work-type">Security lab / Ongoing</span><h3>Urban Grind Lab</h3><p>A pocket cyber-lab project exploring passive reconnaissance, analysis workflows and report organisation on a mobile environment.</p><span class="work-link">Bash / Python / Termux</span></div>
+          </article>
+          <article class="work-card">
+            <div class="work-art"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h3M8 16h5"/><circle cx="17" cy="15" r="2"/></svg></div>
+            <div class="work-content"><span class="work-type">Developer tool / Prototype</span><h3>Packet Manager</h3><p>A command-line concept for capturing and organising network traffic into sessions for later inspection and analysis.</p><span class="work-link">Python / Scapy</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Our process</span>
+          <h2>Clear from first message<br>to <span class="accent">final handover.</span></h2>
+          <p>Good work starts with understanding the problem. We agree the scope before the build begins.</p>
+        </div>
+        <div class="process-grid">
+          <article class="process-card"><h3>Understand the need</h3><p>We discuss your business, what you want to achieve and the problem that needs solving.</p></article>
+          <article class="process-card"><h3>Agree the scope</h3><p>You receive a clear outline of deliverables, timeline, responsibilities and price before work starts.</p></article>
+          <article class="process-card"><h3>Build, test & hand over</h3><p>We work through the agreed scope, review the result with you and provide the agreed access and handover notes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Engagement options</span>
+          <h2>Start with what<br><span class="accent">you need.</span></h2>
+          <p>These are planning guides, not one-size-fits-all contracts. Final pricing depends on the systems, requirements and work involved.</p>
+        </div>
+        <p class="pricing-note">Indicative pricing in Kenyan shillings (KES).</p>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <span class="price-tag">One-time project</span>
+            <h3>Starter Secure</h3>
+            <div class="price">KES 5,000 <small>from</small></div>
+            <p class="price-desc">For a small website or business that needs a practical security starting point.</p>
+            <ul><li>Initial website security review</li><li>Basic configuration recommendations</li><li>Prioritised improvement checklist</li><li>Findings discussion and next steps</li></ul>
+            <a class="button" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20ask%20about%20Starter%20Secure." target="_blank" rel="noopener">Discuss Starter Secure</a>
+          </article>
+          <article class="price-card featured">
+            <span class="price-tag">Ongoing engagement</span>
+            <h3>Business Guard</h3>
+            <div class="price">KES 15,000 <small>from / month</small></div>
+            <p class="price-desc">For a business that wants planned website care and ongoing technical support.</p>
+            <ul><li>Agreed website or shop maintenance</li><li>Scheduled security configuration reviews</li><li>Backup and update checks, where configured</li><li>Monthly summary of completed work</li></ul>
+            <a class="button primary" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20ask%20about%20Business%20Guard." target="_blank" rel="noopener">Discuss Business Guard</a>
+          </article>
+          <article class="price-card">
+            <span class="price-tag">Scoped engagement</span>
+            <h3>Enterprise Fortress</h3>
+            <div class="price">KES 45,000 <small>from / month</small></div>
+            <p class="price-desc">For broader business technology and security requirements that need a defined plan.</p>
+            <ul><li>Scoped website or network assessment</li><li>Prioritised hardening recommendations</li><li>Staff security awareness session</li><li>Agreed follow-up and reporting</li></ul>
+            <a class="button" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20discuss%20an%20Enterprise%20Fortress%20engagement." target="_blank" rel="noopener">Discuss Enterprise</a>
+          </article>
+        </div>
+        <p class="pricing-foot">All security testing is limited to systems you own or have explicit permission to test. Hosting, third-party subscriptions, domain fees and statutory charges are quoted separately where applicable.</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <aside class="about-stamp"><span class="big">UG.</span><p>Technology / Security / Innovation</p></aside>
+        <div class="about-copy">
+          <span class="eyebrow">About Urban Grind Tech</span>
+          <h2>Built around real business needs. <span class="accent">Designed with security in mind.</span></h2>
+          <p>Urban Grind Tech is a Kenya-based digital services brand focused on helping businesses make better use of technology. Our work brings together web development, defensive security, automation and integrations.</p>
+          <p>We believe technology should be useful, understandable and maintainable. That means listening first, agreeing on a realistic scope and giving clients a clear handover — not selling tools they do not need.</p>
+          <div class="values">
+            <div class="value"><strong>Practical by default</strong><span>Solutions shaped around the actual problem.</span></div>
+            <div class="value"><strong>Security-conscious</strong><span>Privacy and safer configurations matter.</span></div>
+            <div class="value"><strong>Clear communication</strong><span>Scope, cost and expectations agreed early.</span></div>
+            <div class="value"><strong>Built to grow</strong><span>Room to improve as your business evolves.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <span class="eyebrow">Let's build something</span>
+            <h2>Have a project in mind?</h2>
+            <p>Tell us what your business needs. We’ll discuss the options, work out a suitable scope and provide a clear quote before anything begins.</p>
+            <p class="contact-small">Kitale, Kenya · Available for remote projects across Kenya</p>
+          </div>
+          <div class="contact-details">
+            <a class="contact-link" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 9c.4 2 2 3.6 4 4l1.1-1 2 1c-.4 1.5-1.4 2-2.8 1.7-3-.8-5.2-3-6-6-.3-1.4.2-2.4 1.7-2.8l1 2L9 9Z"/></svg>
+              <span>WhatsApp<strong>+254 799 277 168</strong></span>
+            </a>
+            <a class="contact-link" href="mailto:enterprisee456@gmail.com?subject=Urban%20Grind%20Tech%20enquiry">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              <span>Email<strong>enterprisee456@gmail.com</strong></span>
+            </a>
+            <a class="button primary" href="https://wa.me/254799277168?text=Hello%20Urban%20Grind%20Tech%2C%20I%27d%20like%20to%20start%20a%20conversation." target="_blank" rel="noopener">Start a conversation ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a class="brand" href="#top" aria-label="Urban Grind Tech home">
+          <span class="brand-mark">UG</span>
+          <span class="brand-name"><strong>URBAN GRIND</strong><small>TECHNOLOGY / SECURITY</small></span>
+        </a>
+        <div class="footer-links"><a href="#services">Services</a><a href="#work">Work</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+        <span class="footer-copy">© <span id="year">2026</span> Urban Grind Tech</span>
+      </div>
+      <p class="disclaimer">Urban Grind Tech is an independent technology services brand and is not affiliated with or endorsed by any government agency. Government portal assistance, where offered, does not replace official advice or services. Security work is performed only with appropriate authorisation.</p>
+    </div>
+  </footer>
+
+  <a class="back-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 14 6-6 6 6"/></svg></a>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      const backTop = document.querySelector('.back-top');
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+      });
+
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+          menuButton.setAttribute('aria-label', 'Open navigation');
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        backTop.classList.toggle('visible', window.scrollY > 500);
+      }, { passive: true });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
